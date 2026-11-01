@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Battleship</title>
+    </head>
+    <body>
+        <header>
+            <h1>Battleship</h1>
+
+            <div id="mode-selector">
+                <button id="mode-1p" class="mode-btn active" data-mode="1p">
+                    1 Player
+                </button>
+                <button id="mode-2p" class="mode-btn" data-mode="2p">
+                    2 Players
+                </button>
+            </div>
+
+            <p id="status">Place your ships, then click "Start Game".</p>
+        </header>
+
+        <main id="app">
+            <section class="board-section">
+                <h2 id="player-label">Your Board</h2>
+                <div id="player-board" class="board"></div>
+            </section>
+
+            <section class="board-section">
+                <h2 id="enemy-label">Enemy Board</h2>
+                <div id="enemy-board" class="board"></div>
+            </section>
+        </main>
+
+        <div id="dock" class="dock"></div>
+
+        <footer id="controls">
+            <button id="rotate-btn" class="hidden">Rotate (R)</button>
+            <button id="randomize-btn">Randomize Ships</button>
+            <button id="reset-placement-btn" class="hidden">Reset Ships</button>
+            <button id="start-btn">Start Game</button>
+            <button id="restart-btn" class="hidden">Play Again</button>
+        </footer>
+
+        <div id="pass-screen" class="pass-screen hidden">
+            <div class="pass-card">
+                <h2 id="pass-title">Pass the device</h2>
+                <p id="pass-message">Player 2, get ready.</p>
+                <button id="pass-continue">I'm Ready</button>
+            </div>
+        </div>
+    </body>
+</html>

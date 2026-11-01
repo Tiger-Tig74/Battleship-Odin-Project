@@ -1,0 +1,284 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    padding: 1.5rem 1rem 0.5rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+#status {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #93c5fd;
+    min-height: 1.4em;
+}
+
+#app {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2.5rem;
+    padding: 1.5rem;
+    justify-content: center;
+}
+
+.board-section h2 {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(10, 36px);
+    grid-template-rows: repeat(10, 36px);
+    gap: 2px;
+    background: #1e293b;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.cell {
+    width: 36px;
+    height: 36px;
+    background: #334155;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e2e8f0;
+    transition: background 0.15s;
+}
+
+.cell:hover:not(:disabled) {
+    background: #475569;
+}
+
+.cell:disabled {
+    cursor: default;
+}
+
+.cell.ship {
+    background: #475569;
+}
+
+.cell.hit {
+    background: #dc2626;
+}
+
+.cell.miss {
+    background: #0f172a;
+    color: #94a3b8;
+}
+
+#controls {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem 0 2rem;
+}
+
+#controls button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background: #2563eb;
+    color: #fff;
+    transition: background 0.15s;
+}
+
+#controls button:hover {
+    background: #1d4ed8;
+}
+
+#controls button.hidden {
+    display: none;
+}
+
+#mode-selector {
+    display: inline-flex;
+    gap: 0;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.mode-btn {
+    padding: 0.45rem 1rem;
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.mode-btn.active {
+    background: #2563eb;
+    color: #fff;
+}
+
+.dock {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #1e293b;
+    border-radius: 10px;
+    margin: 0.5rem 1rem;
+}
+
+.dock.hidden {
+    display: none;
+}
+
+.ship-card {
+    background: #334155;
+    border: 2px dashed #64748b;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    user-select: none;
+}
+
+.ship-card:active {
+    cursor: grabbing;
+}
+
+.ship-label {
+    font-size: 0.75rem;
+    color: #cbd5e1;
+    letter-spacing: 0.5px;
+}
+
+.ship-silhouette {
+    display: flex;
+    gap: 2px;
+}
+
+.ship-silhouette.vertical {
+    flex-direction: column;
+}
+
+.ship-seg {
+    width: 14px;
+    height: 14px;
+    background: #475569;
+    border-radius: 2px;
+}
+
+.cell.preview-ok {
+    background: #22c55e !important;
+    opacity: 0.6;
+}
+
+.cell.preview-bad {
+    background: #ef4444 !important;
+    opacity: 0.6;
+}
+
+.pass-screen {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.pass-screen.hidden {
+    display: none;
+}
+
+.pass-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 2.5rem 3rem;
+    max-width: 420px;
+    text-align: center;
+}
+
+.pass-card h2 {
+    margin-bottom: 0.75rem;
+    color: #93c5fd;
+}
+
+.pass-card p {
+    margin-bottom: 1.5rem;
+    color: #cbd5e1;
+}
+
+.pass-card button {
+    padding: 0.7rem 1.6rem;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.pass-card button:hover {
+    background: #1d4ed8;
+}
+
+.board-hidden {
+    visibility: hidden;
+}
+
+#player-label,
+#enemy-label {
+    font-size: 1rem;
+}
+
+@media (max-width: 820px) {
+    #app {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .board {
+        grid-template-columns: repeat(10, 28px);
+        grid-template-rows: repeat(10, 28px);
+    }
+
+    .cell {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+}
